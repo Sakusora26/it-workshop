@@ -1,0 +1,56 @@
+@charset "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background-color:#cccc;
+	font-family:serif;
+}
+h1{
+	border-bottom:1px solid #333;
+}
+.wrapper{
+	width:70%;
+	padding:5rem;
+	margin:3rem auto;
+	background-color:#fcf;
+	text-align:center;
+}
+
+.main{
+	width:500px;
+	margin:7rem auto;
+	background-color:#fff;
+	padding:1.5rem;
+}
+p{
+	margin :1rem;
+	font-size:0.8rem;
+	font-family:sans-serif;
+}
+.error{
+	color:red;
+}
+a{
+	background-color:orange;
+	padding:0.2rem;
+	color:#fff;
+	border-radius:0.5rem;
+	text-decoration:none;
+}
+a:hover{
+	background-color:green;
+}
+.btn{
+	background-color:orange;
+	padding:0.2rem;
+	color:#fff;
+	border-radius:0.5rem;
+	text-decoration:none;
+}
+/*ここからメディアクエリ*/
+@media screen and (width: 600px) {
+	
+	}
+	
