@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>プリント管理アプリ</title>
+</head>
+<body>
+    <h1>配布されたプリント一覧</h1>
+
+    {% for year_month, handouts in grouped_handouts.items() %}
+    <h2>{{ year_month }}のプリント</h2>
+    <ul>
+        {% for handout in handouts %}
+        <li>{{ handout[0] }} - {{ handout[1] }}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h2>新しいプリントを追加</h2>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="プリント名" required>
+        <button type="submit">追加</button>
+    </form>
+</body>
+</html>
