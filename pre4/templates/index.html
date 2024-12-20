@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>プリント管理アプリ</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>配布されたプリント一覧</h1>
+        </header>
+        
+        <!-- 新しいプリント追加フォームをテーブルの前に移動 -->
+        <section class="add-handout">
+            <h2>新しいプリントを追加</h2>
+            <form action="/add" method="post">
+                <input type="text" name="name" placeholder="プリント名" required>
+                <button type="submit">追加</button>
+            </form>
+        </section>
+        
+        <section class="handout-section">
+            {% for year_month, handouts in grouped_handouts.items() %}
+                <h2>{{ year_month }}のプリント</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>プリント名</th>
+                            <th>日付</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for handout in handouts %}
+                        <tr>
+                            <td>{{ handout[0] }}</td>
+                            <td>
+                                <form action="/update/{{ handout[0] }}" method="POST">
+                                    <input type="text" name="date" value="{{ handout[1] }}" required>
+                                    <button type="submit">更新</button>
+                                </form>
+                            </td>
+                            <td><button class="delete-btn">削除</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        </section>
+    </div>
+</body>
+</html>
